@@ -1,6 +1,7 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -51,7 +52,11 @@ public class SignupPage {
     }
 
     public void clickCreateAccount() {
-        WebElement button = wait.until(ExpectedConditions.elementToBeClickable(createAccountButton));
-        button.click();
+        WebElement createAccountBtn = driver.findElement(By.cssSelector("button[title='Create an Account']"));
+
+        // Scroll into view and click using JS
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView(true);", createAccountBtn);
+        js.executeScript("arguments[0].click();", createAccountBtn);
     }
 }

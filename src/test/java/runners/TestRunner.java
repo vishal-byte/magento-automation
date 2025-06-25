@@ -6,13 +6,14 @@ import io.cucumber.junit.CucumberOptions;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = "src/test/resources/features",          // Path to feature files
-        glue = {"stepdefinitions"},                        // Path to step definitions
+        features = "src/test/resources/features",
+        glue = {"stepdefinitions"},
         plugin = {
-                "pretty",                                      // Console output
-                "html:target/cucumber-report.html"             // HTML report
+                "pretty",
+                "html:target/cucumber-html-report.html",
+                "json:target/cucumber.json"  // This line is critical
         },
-        monochrome = true                                  // Clean console output
+        monochrome = true
 )
 public class TestRunner {
 }
